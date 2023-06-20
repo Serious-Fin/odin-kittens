@@ -11,6 +11,15 @@
   </head>
 
   <body>
+
+    <% if flash[:error] %>
+      <%= flash[:error] %>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <%= flash[:alert] %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
