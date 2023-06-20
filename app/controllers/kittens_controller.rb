@@ -23,6 +23,30 @@ class KittensController < ApplicationController
     end
   end
 
+  def edit
+    @kitten = Kitten.find(id=params[:id])
+  end
+
+  def update
+    @kitten = Kitten.find(id=params[:id])
+
+    if @kitten.update(kitten_params)
+      flash[:alert] = "Kitten updated successfully"
+      redirect_to(@kitten)
+    else
+      flash.now[:error] = "Please correctly fill out the form"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @kitten = Kitten.find(id=params[:id])
+    flash[:alert] = "Kitten #{@kitten.name} deleted successfully"
+    @kitten.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   private
   def kitten_params
     params.require(:kitten).permit(:name, :age, :cuteness, :softness)

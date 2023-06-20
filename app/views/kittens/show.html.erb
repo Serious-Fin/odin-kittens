@@ -1,3 +1,7 @@
 <h1>Show page: display single kitten</h1>
 
 <%= @kitten.kitten_info %>
+
+<br \>
+
+<%= render partial: "kittens/partials/delete_button", locals: {kitten: @kitten} %>

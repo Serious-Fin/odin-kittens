@@ -1,5 +1,7 @@
 <h1>Index page: list all kittens</h1>
 
 <% @kittens.each do |kitten| %>
-  <%= kitten.kitten_info %> <br \>
+  <%= kitten.kitten_info %>
+  <%= render partial: "kittens/partials/delete_button", locals: {kitten: kitten} %>
+  <br \>
 <% end %>
